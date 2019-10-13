@@ -32,7 +32,9 @@ def download_data(name, url, out_dir):
     assert '.csv' not in name, f'Received {name}! ' \
         f'Please provide name without csv suffix'
 
-    out_path = Path(out_dir) / f'{name}.csv'
+    out_dir = Path(out_dir)
+    # out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / f'{name}.csv'
 
     log.info('Downloading dataset')
     log.info(f'Will write to {out_path}')

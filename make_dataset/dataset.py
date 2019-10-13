@@ -26,6 +26,7 @@ def make_datasets(in_csv, out_dir):
 
     # Connect to the dask cluster
     c = Client('dask-scheduler:8786')
+    # c = Client('192.168.99.100:8786')
 
     # load data as a dask Dataframe if you have trouble with dask
     # please fall back to pandas or numpy
@@ -36,6 +37,12 @@ def make_datasets(in_csv, out_dir):
 
     # trigger computation
     n_samples = len(ddf)
+
+    ddf.compute()
+
+
+    ddf.categorize()
+    print(ddf.loc[[1,2]])
 
     # TODO: implement proper dataset creation here
     # http://docs.dask.org/en/latest/dataframe-api.html
